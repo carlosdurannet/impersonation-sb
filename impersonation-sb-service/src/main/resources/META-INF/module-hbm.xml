@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping auto-import="false" default-lazy="false">
+	<import class="net.carlosduran.liferay.impersonation.sb.model.ImpersonationRegistry" />
+	<class name="net.carlosduran.liferay.impersonation.sb.model.impl.ImpersonationRegistryImpl" table="cdnet_ImpersonationRegistry">
+		<id name="impersonationRegistryId" type="long">
+			<generator class="assigned" />
+		</id>
+		<property name="companyId" type="com.liferay.portal.dao.orm.hibernate.LongType" />
+		<property name="userId" type="com.liferay.portal.dao.orm.hibernate.LongType" />
+		<property name="screenName" type="com.liferay.portal.dao.orm.hibernate.StringType" />
+		<property name="impersonatedUserId" type="com.liferay.portal.dao.orm.hibernate.LongType" />
+		<property name="impersonatedScreenName" type="com.liferay.portal.dao.orm.hibernate.StringType" />
+		<property name="operationDate" type="org.hibernate.type.TimestampType" />
+		<property name="operationResult" type="com.liferay.portal.dao.orm.hibernate.IntegerType" />
+	</class>
+</hibernate-mapping>
