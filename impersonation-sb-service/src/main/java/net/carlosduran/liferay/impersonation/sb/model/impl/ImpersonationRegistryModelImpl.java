@@ -26,6 +26,7 @@ import com.liferay.portal.kernel.model.User;
 import com.liferay.portal.kernel.model.impl.BaseModelImpl;
 import com.liferay.portal.kernel.service.ServiceContext;
 import com.liferay.portal.kernel.service.UserLocalServiceUtil;
+import com.liferay.portal.kernel.util.DateUtil;
 import com.liferay.portal.kernel.util.GetterUtil;
 import com.liferay.portal.kernel.util.ProxyUtil;
 import com.liferay.portal.kernel.util.StringBundler;
@@ -100,10 +101,10 @@ public class ImpersonationRegistryModelImpl
 		"drop table cdnet_ImpersonationRegistry";
 
 	public static final String ORDER_BY_JPQL =
-		" ORDER BY impersonationRegistry.impersonationRegistryId ASC";
+		" ORDER BY impersonationRegistry.operationDate DESC";
 
 	public static final String ORDER_BY_SQL =
-		" ORDER BY cdnet_ImpersonationRegistry.impersonationRegistryId ASC";
+		" ORDER BY cdnet_ImpersonationRegistry.operationDate DESC";
 
 	public static final String DATA_SOURCE = "liferayDataSource";
 
@@ -121,7 +122,14 @@ public class ImpersonationRegistryModelImpl
 			"value.object.finder.cache.enabled.net.carlosduran.liferay.impersonation.sb.model.ImpersonationRegistry"),
 		true);
 
-	public static final boolean COLUMN_BITMASK_ENABLED = false;
+	public static final boolean COLUMN_BITMASK_ENABLED = GetterUtil.getBoolean(
+		net.carlosduran.liferay.impersonation.sb.service.util.ServiceProps.get(
+			"value.object.column.bitmask.enabled.net.carlosduran.liferay.impersonation.sb.model.ImpersonationRegistry"),
+		true);
+
+	public static final long COMPANYID_COLUMN_BITMASK = 1L;
+
+	public static final long OPERATIONDATE_COLUMN_BITMASK = 2L;
 
 	public static final long LOCK_EXPIRATION_TIME = GetterUtil.getLong(
 		net.carlosduran.liferay.impersonation.sb.service.util.ServiceProps.get(
@@ -485,7 +493,19 @@ public class ImpersonationRegistryModelImpl
 
 	@Override
 	public void setCompanyId(long companyId) {
+		_columnBitmask |= COMPANYID_COLUMN_BITMASK;
+
+		if (!_setOriginalCompanyId) {
+			_setOriginalCompanyId = true;
+
+			_originalCompanyId = _companyId;
+		}
+
 		_companyId = companyId;
+	}
+
+	public long getOriginalCompanyId() {
+		return _originalCompanyId;
 	}
 
 	@Override
@@ -578,6 +598,8 @@ public class ImpersonationRegistryModelImpl
 
 	@Override
 	public void setOperationDate(Date operationDate) {
+		_columnBitmask = -1L;
+
 		_operationDate = operationDate;
 	}
 
@@ -589,6 +611,10 @@ public class ImpersonationRegistryModelImpl
 	@Override
 	public void setOperationResult(int operationResult) {
 		_operationResult = operationResult;
+	}
+
+	public long getColumnBitmask() {
+		return _columnBitmask;
 	}
 
 	@Override
@@ -639,17 +665,18 @@ public class ImpersonationRegistryModelImpl
 
 	@Override
 	public int compareTo(ImpersonationRegistry impersonationRegistry) {
-		long primaryKey = impersonationRegistry.getPrimaryKey();
+		int value = 0;
 
-		if (getPrimaryKey() < primaryKey) {
-			return -1;
+		value = DateUtil.compareTo(
+			getOperationDate(), impersonationRegistry.getOperationDate());
+
+		value = value * -1;
+
+		if (value != 0) {
+			return value;
 		}
-		else if (getPrimaryKey() > primaryKey) {
-			return 1;
-		}
-		else {
-			return 0;
-		}
+
+		return 0;
 	}
 
 	@Override
@@ -692,6 +719,14 @@ public class ImpersonationRegistryModelImpl
 
 	@Override
 	public void resetOriginalValues() {
+		ImpersonationRegistryModelImpl impersonationRegistryModelImpl = this;
+
+		impersonationRegistryModelImpl._originalCompanyId =
+			impersonationRegistryModelImpl._companyId;
+
+		impersonationRegistryModelImpl._setOriginalCompanyId = false;
+
+		impersonationRegistryModelImpl._columnBitmask = 0;
 	}
 
 	@Override
@@ -814,12 +849,15 @@ public class ImpersonationRegistryModelImpl
 
 	private long _impersonationRegistryId;
 	private long _companyId;
+	private long _originalCompanyId;
+	private boolean _setOriginalCompanyId;
 	private long _userId;
 	private String _screenName;
 	private long _impersonatedUserId;
 	private String _impersonatedScreenName;
 	private Date _operationDate;
 	private int _operationResult;
+	private long _columnBitmask;
 	private ImpersonationRegistry _escapedModel;
 
 }

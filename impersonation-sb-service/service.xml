@@ -13,5 +13,11 @@
 		<column name="impersonatedScreenName" type="String" />
 		<column name="operationDate" type="Date" />
 		<column name="operationResult" type="int" />
+        <order by="desc">
+            <order-column name="operationDate" order-by="desc"></order-column>
+        </order>
+        <finder name="companyId" return-type="Collection">
+            <finder-column name="companyId"></finder-column>
+        </finder>
     </entity>
 </service-builder>

@@ -1,0 +1,1 @@
+create index IX_35AE656C on cdnet_ImpersonationRegistry (companyId);

@@ -51,6 +51,150 @@ public interface ImpersonationRegistryPersistence
 		Set<Serializable> primaryKeys);
 
 	/**
+	 * Returns all the impersonation registries where companyId = &#63;.
+	 *
+	 * @param companyId the company ID
+	 * @return the matching impersonation registries
+	 */
+	public java.util.List<ImpersonationRegistry> findBycompanyId(
+		long companyId);
+
+	/**
+	 * Returns a range of all the impersonation registries where companyId = &#63;.
+	 *
+	 * <p>
+	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to <code>QueryUtil#ALL_POS</code> will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent and pagination is required (<code>start</code> and <code>end</code> are not <code>QueryUtil#ALL_POS</code>), then the query will include the default ORDER BY logic from <code>ImpersonationRegistryModelImpl</code>. If both <code>orderByComparator</code> and pagination are absent, for performance reasons, the query will not have an ORDER BY clause and the returned result set will be sorted on by the primary key in an ascending order.
+	 * </p>
+	 *
+	 * @param companyId the company ID
+	 * @param start the lower bound of the range of impersonation registries
+	 * @param end the upper bound of the range of impersonation registries (not inclusive)
+	 * @return the range of matching impersonation registries
+	 */
+	public java.util.List<ImpersonationRegistry> findBycompanyId(
+		long companyId, int start, int end);
+
+	/**
+	 * Returns an ordered range of all the impersonation registries where companyId = &#63;.
+	 *
+	 * <p>
+	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to <code>QueryUtil#ALL_POS</code> will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent and pagination is required (<code>start</code> and <code>end</code> are not <code>QueryUtil#ALL_POS</code>), then the query will include the default ORDER BY logic from <code>ImpersonationRegistryModelImpl</code>. If both <code>orderByComparator</code> and pagination are absent, for performance reasons, the query will not have an ORDER BY clause and the returned result set will be sorted on by the primary key in an ascending order.
+	 * </p>
+	 *
+	 * @param companyId the company ID
+	 * @param start the lower bound of the range of impersonation registries
+	 * @param end the upper bound of the range of impersonation registries (not inclusive)
+	 * @param orderByComparator the comparator to order the results by (optionally <code>null</code>)
+	 * @return the ordered range of matching impersonation registries
+	 */
+	public java.util.List<ImpersonationRegistry> findBycompanyId(
+		long companyId, int start, int end,
+		com.liferay.portal.kernel.util.OrderByComparator<ImpersonationRegistry>
+			orderByComparator);
+
+	/**
+	 * Returns an ordered range of all the impersonation registries where companyId = &#63;.
+	 *
+	 * <p>
+	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to <code>QueryUtil#ALL_POS</code> will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent and pagination is required (<code>start</code> and <code>end</code> are not <code>QueryUtil#ALL_POS</code>), then the query will include the default ORDER BY logic from <code>ImpersonationRegistryModelImpl</code>. If both <code>orderByComparator</code> and pagination are absent, for performance reasons, the query will not have an ORDER BY clause and the returned result set will be sorted on by the primary key in an ascending order.
+	 * </p>
+	 *
+	 * @param companyId the company ID
+	 * @param start the lower bound of the range of impersonation registries
+	 * @param end the upper bound of the range of impersonation registries (not inclusive)
+	 * @param orderByComparator the comparator to order the results by (optionally <code>null</code>)
+	 * @param retrieveFromCache whether to retrieve from the finder cache
+	 * @return the ordered range of matching impersonation registries
+	 */
+	public java.util.List<ImpersonationRegistry> findBycompanyId(
+		long companyId, int start, int end,
+		com.liferay.portal.kernel.util.OrderByComparator<ImpersonationRegistry>
+			orderByComparator,
+		boolean retrieveFromCache);
+
+	/**
+	 * Returns the first impersonation registry in the ordered set where companyId = &#63;.
+	 *
+	 * @param companyId the company ID
+	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	 * @return the first matching impersonation registry
+	 * @throws NoSuchImpersonationRegistryException if a matching impersonation registry could not be found
+	 */
+	public ImpersonationRegistry findBycompanyId_First(
+			long companyId,
+			com.liferay.portal.kernel.util.OrderByComparator
+				<ImpersonationRegistry> orderByComparator)
+		throws NoSuchImpersonationRegistryException;
+
+	/**
+	 * Returns the first impersonation registry in the ordered set where companyId = &#63;.
+	 *
+	 * @param companyId the company ID
+	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	 * @return the first matching impersonation registry, or <code>null</code> if a matching impersonation registry could not be found
+	 */
+	public ImpersonationRegistry fetchBycompanyId_First(
+		long companyId,
+		com.liferay.portal.kernel.util.OrderByComparator<ImpersonationRegistry>
+			orderByComparator);
+
+	/**
+	 * Returns the last impersonation registry in the ordered set where companyId = &#63;.
+	 *
+	 * @param companyId the company ID
+	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	 * @return the last matching impersonation registry
+	 * @throws NoSuchImpersonationRegistryException if a matching impersonation registry could not be found
+	 */
+	public ImpersonationRegistry findBycompanyId_Last(
+			long companyId,
+			com.liferay.portal.kernel.util.OrderByComparator
+				<ImpersonationRegistry> orderByComparator)
+		throws NoSuchImpersonationRegistryException;
+
+	/**
+	 * Returns the last impersonation registry in the ordered set where companyId = &#63;.
+	 *
+	 * @param companyId the company ID
+	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	 * @return the last matching impersonation registry, or <code>null</code> if a matching impersonation registry could not be found
+	 */
+	public ImpersonationRegistry fetchBycompanyId_Last(
+		long companyId,
+		com.liferay.portal.kernel.util.OrderByComparator<ImpersonationRegistry>
+			orderByComparator);
+
+	/**
+	 * Returns the impersonation registries before and after the current impersonation registry in the ordered set where companyId = &#63;.
+	 *
+	 * @param impersonationRegistryId the primary key of the current impersonation registry
+	 * @param companyId the company ID
+	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	 * @return the previous, current, and next impersonation registry
+	 * @throws NoSuchImpersonationRegistryException if a impersonation registry with the primary key could not be found
+	 */
+	public ImpersonationRegistry[] findBycompanyId_PrevAndNext(
+			long impersonationRegistryId, long companyId,
+			com.liferay.portal.kernel.util.OrderByComparator
+				<ImpersonationRegistry> orderByComparator)
+		throws NoSuchImpersonationRegistryException;
+
+	/**
+	 * Removes all the impersonation registries where companyId = &#63; from the database.
+	 *
+	 * @param companyId the company ID
+	 */
+	public void removeBycompanyId(long companyId);
+
+	/**
+	 * Returns the number of impersonation registries where companyId = &#63;.
+	 *
+	 * @param companyId the company ID
+	 * @return the number of matching impersonation registries
+	 */
+	public int countBycompanyId(long companyId);
+
+	/**
 	 * Caches the impersonation registry in the entity cache if it is enabled.
 	 *
 	 * @param impersonationRegistry the impersonation registry
