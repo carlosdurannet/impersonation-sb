@@ -4,4 +4,4 @@ This is a Service Builder module for the [impersonation-login module](https://gi
 
 ## Requirements
 
-The module needs a Liferay 7.1.x Portal with [impersonation-login module](https://github.com/carlosdurannet/impersonation-login) deployed
+The module needs a Liferay 7.1.x or 7.2.x Portal with [impersonation-login module](https://github.com/carlosdurannet/impersonation-login) deployed
