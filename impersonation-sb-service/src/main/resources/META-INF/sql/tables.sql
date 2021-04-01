@@ -1,4 +1,5 @@
 create table cdnet_ImpersonationRegistry (
+	uuid_ VARCHAR(75) null,
 	impersonationRegistryId LONG not null primary key,
 	companyId LONG,
 	userId LONG,
