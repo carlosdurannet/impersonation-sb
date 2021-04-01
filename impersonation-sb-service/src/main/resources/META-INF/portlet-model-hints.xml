@@ -2,6 +2,7 @@
 
 <model-hints>
 	<model name="net.carlosduran.liferay.impersonation.sb.model.ImpersonationRegistry">
+		<field name="uuid" type="String" />
 		<field name="impersonationRegistryId" type="long" />
 		<field name="companyId" type="long" />
 		<field name="userId" type="long" />

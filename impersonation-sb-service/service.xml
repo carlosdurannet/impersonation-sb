@@ -1,10 +1,12 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE service-builder PUBLIC "-//Liferay//DTD Service Builder 7.0.0//EN" "http://www.liferay.com/dtd/liferay-service-builder_7_0_0.dtd">
-<service-builder package-path="net.carlosduran.liferay.impersonation.sb">
-    <author>Carlos Durán</author>
-    <namespace>cdnet</namespace>
-    <entity name="ImpersonationRegistry" remote-service="false" local-service="true">
-    	<column name="impersonationRegistryId" primary="true" type="long" />
+<?xml version="1.0"?>
+<!DOCTYPE service-builder PUBLIC "-//Liferay//DTD Service Builder 7.3.0//EN" "http://www.liferay.com/dtd/liferay-service-builder_7_3_0.dtd">
+
+<service-builder dependency-injector="ds" package-path="net.carlosduran.liferay.impersonation.sb">
+	<namespace>cdnet</namespace>
+	<!--<entity data-source="sampleDataSource" local-service="true" name="Foo" remote-service="false" session-factory="sampleSessionFactory" table="foo" tx-manager="sampleTransactionManager uuid="true"">-->
+	<entity local-service="true" name="ImpersonationRegistry" remote-service="true" uuid="true">
+
+		<column name="impersonationRegistryId" primary="true" type="long"  />
 
 		<column name="companyId" type="long" />		
 		<column name="userId" type="long" />
@@ -14,10 +16,10 @@
 		<column name="operationDate" type="Date" />
 		<column name="operationResult" type="int" />
         <order by="desc">
-            <order-column name="operationDate" order-by="desc"></order-column>
+            <order-column name="operationDate" order-by="desc"/>
         </order>
         <finder name="companyId" return-type="Collection">
-            <finder-column name="companyId"></finder-column>
+            <finder-column name="companyId"/>
         </finder>
-    </entity>
+	</entity>
 </service-builder>

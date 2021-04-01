@@ -14,11 +14,9 @@
 
 package net.carlosduran.liferay.impersonation.sb.model.impl;
 
-import aQute.bnd.annotation.ProviderType;
-
+import com.liferay.petra.lang.HashUtil;
+import com.liferay.petra.string.StringBundler;
 import com.liferay.portal.kernel.model.CacheModel;
-import com.liferay.portal.kernel.util.HashUtil;
-import com.liferay.portal.kernel.util.StringBundler;
 
 import java.io.Externalizable;
 import java.io.IOException;
@@ -32,25 +30,24 @@ import net.carlosduran.liferay.impersonation.sb.model.ImpersonationRegistry;
 /**
  * The cache model class for representing ImpersonationRegistry in entity cache.
  *
- * @author Carlos Durán
+ * @author Brian Wing Shun Chan
  * @generated
  */
-@ProviderType
 public class ImpersonationRegistryCacheModel
 	implements CacheModel<ImpersonationRegistry>, Externalizable {
 
 	@Override
-	public boolean equals(Object obj) {
-		if (this == obj) {
+	public boolean equals(Object object) {
+		if (this == object) {
 			return true;
 		}
 
-		if (!(obj instanceof ImpersonationRegistryCacheModel)) {
+		if (!(object instanceof ImpersonationRegistryCacheModel)) {
 			return false;
 		}
 
 		ImpersonationRegistryCacheModel impersonationRegistryCacheModel =
-			(ImpersonationRegistryCacheModel)obj;
+			(ImpersonationRegistryCacheModel)object;
 
 		if (impersonationRegistryId ==
 				impersonationRegistryCacheModel.impersonationRegistryId) {
@@ -68,9 +65,11 @@ public class ImpersonationRegistryCacheModel
 
 	@Override
 	public String toString() {
-		StringBundler sb = new StringBundler(17);
+		StringBundler sb = new StringBundler(19);
 
-		sb.append("{impersonationRegistryId=");
+		sb.append("{uuid=");
+		sb.append(uuid);
+		sb.append(", impersonationRegistryId=");
 		sb.append(impersonationRegistryId);
 		sb.append(", companyId=");
 		sb.append(companyId);
@@ -95,6 +94,13 @@ public class ImpersonationRegistryCacheModel
 	public ImpersonationRegistry toEntityModel() {
 		ImpersonationRegistryImpl impersonationRegistryImpl =
 			new ImpersonationRegistryImpl();
+
+		if (uuid == null) {
+			impersonationRegistryImpl.setUuid("");
+		}
+		else {
+			impersonationRegistryImpl.setUuid(uuid);
+		}
 
 		impersonationRegistryImpl.setImpersonationRegistryId(
 			impersonationRegistryId);
@@ -134,6 +140,8 @@ public class ImpersonationRegistryCacheModel
 
 	@Override
 	public void readExternal(ObjectInput objectInput) throws IOException {
+		uuid = objectInput.readUTF();
+
 		impersonationRegistryId = objectInput.readLong();
 
 		companyId = objectInput.readLong();
@@ -150,6 +158,13 @@ public class ImpersonationRegistryCacheModel
 
 	@Override
 	public void writeExternal(ObjectOutput objectOutput) throws IOException {
+		if (uuid == null) {
+			objectOutput.writeUTF("");
+		}
+		else {
+			objectOutput.writeUTF(uuid);
+		}
+
 		objectOutput.writeLong(impersonationRegistryId);
 
 		objectOutput.writeLong(companyId);
@@ -177,6 +192,7 @@ public class ImpersonationRegistryCacheModel
 		objectOutput.writeInt(operationResult);
 	}
 
+	public String uuid;
 	public long impersonationRegistryId;
 	public long companyId;
 	public long userId;

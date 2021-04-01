@@ -13,14 +13,11 @@
  */
 package net.carlosduran.liferay.impersonation.sb.exception;
 
-import aQute.bnd.annotation.ProviderType;
-
 import com.liferay.portal.kernel.exception.NoSuchModelException;
 
 /**
- * @author Carlos Durán
+ * @author Brian Wing Shun Chan
  */
-@ProviderType
 public class NoSuchImpersonationRegistryException extends NoSuchModelException {
 
 	public NoSuchImpersonationRegistryException() {
@@ -30,12 +27,12 @@ public class NoSuchImpersonationRegistryException extends NoSuchModelException {
 		super(msg);
 	}
 
-	public NoSuchImpersonationRegistryException(String msg, Throwable cause) {
-		super(msg, cause);
+	public NoSuchImpersonationRegistryException(String msg, Throwable throwable) {
+		super(msg, throwable);
 	}
 
-	public NoSuchImpersonationRegistryException(Throwable cause) {
-		super(cause);
+	public NoSuchImpersonationRegistryException(Throwable throwable) {
+		super(throwable);
 	}
 
 }

@@ -14,18 +14,15 @@
 
 package net.carlosduran.liferay.impersonation.sb.model.impl;
 
-import aQute.bnd.annotation.ProviderType;
-
 /**
  * The extended model implementation for the ImpersonationRegistry service. Represents a row in the &quot;cdnet_ImpersonationRegistry&quot; database table, with each column mapped to a property of this class.
  *
  * <p>
- * Helper methods and all application logic should be put in this class. Whenever methods are added, rerun ServiceBuilder to copy their definitions into the <code>net.carlosduran.liferay.impersonation.sb.model.ImpersonationRegistry<code> interface.
+ * Helper methods and all application logic should be put in this class. Whenever methods are added, rerun ServiceBuilder to copy their definitions into the <code>net.carlosduran.liferay.impersonation.sb.model.ImpersonationRegistry</code> interface.
  * </p>
  *
- * @author Carlos Durán
+ * @author Brian Wing Shun Chan
  */
-@ProviderType
 public class ImpersonationRegistryImpl extends ImpersonationRegistryBaseImpl {
 
 	/*
