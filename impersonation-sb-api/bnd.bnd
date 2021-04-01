@@ -1,6 +1,6 @@
 Bundle-Name: impersonation-sb-api
 Bundle-SymbolicName: net.carlosduran.liferay.impersonation.sb.api
-Bundle-Version: 2.0.0
+Bundle-Version: 1.0.0
 Export-Package:\
 	net.carlosduran.liferay.impersonation.sb.exception,\
 	net.carlosduran.liferay.impersonation.sb.model,\

@@ -14,52 +14,37 @@
 
 package net.carlosduran.liferay.impersonation.sb.model;
 
-import aQute.bnd.annotation.ProviderType;
-
-import com.liferay.expando.kernel.model.ExpandoBridge;
 import com.liferay.portal.kernel.model.ModelWrapper;
-import com.liferay.portal.kernel.service.ServiceContext;
-
-import java.io.Serializable;
+import com.liferay.portal.kernel.model.wrapper.BaseModelWrapper;
 
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Objects;
 
 /**
  * <p>
  * This class is a wrapper for {@link ImpersonationRegistry}.
  * </p>
  *
- * @author Carlos Durán
+ * @author Brian Wing Shun Chan
  * @see ImpersonationRegistry
  * @generated
  */
-@ProviderType
 public class ImpersonationRegistryWrapper
+	extends BaseModelWrapper<ImpersonationRegistry>
 	implements ImpersonationRegistry, ModelWrapper<ImpersonationRegistry> {
 
 	public ImpersonationRegistryWrapper(
 		ImpersonationRegistry impersonationRegistry) {
 
-		_impersonationRegistry = impersonationRegistry;
-	}
-
-	@Override
-	public Class<?> getModelClass() {
-		return ImpersonationRegistry.class;
-	}
-
-	@Override
-	public String getModelClassName() {
-		return ImpersonationRegistry.class.getName();
+		super(impersonationRegistry);
 	}
 
 	@Override
 	public Map<String, Object> getModelAttributes() {
 		Map<String, Object> attributes = new HashMap<String, Object>();
 
+		attributes.put("uuid", getUuid());
 		attributes.put("impersonationRegistryId", getImpersonationRegistryId());
 		attributes.put("companyId", getCompanyId());
 		attributes.put("userId", getUserId());
@@ -74,6 +59,12 @@ public class ImpersonationRegistryWrapper
 
 	@Override
 	public void setModelAttributes(Map<String, Object> attributes) {
+		String uuid = (String)attributes.get("uuid");
+
+		if (uuid != null) {
+			setUuid(uuid);
+		}
+
 		Long impersonationRegistryId = (Long)attributes.get(
 			"impersonationRegistryId");
 
@@ -125,20 +116,6 @@ public class ImpersonationRegistryWrapper
 		}
 	}
 
-	@Override
-	public Object clone() {
-		return new ImpersonationRegistryWrapper(
-			(ImpersonationRegistry)_impersonationRegistry.clone());
-	}
-
-	@Override
-	public int compareTo(
-		net.carlosduran.liferay.impersonation.sb.model.ImpersonationRegistry
-			impersonationRegistry) {
-
-		return _impersonationRegistry.compareTo(impersonationRegistry);
-	}
-
 	/**
 	 * Returns the company ID of this impersonation registry.
 	 *
@@ -146,12 +123,7 @@ public class ImpersonationRegistryWrapper
 	 */
 	@Override
 	public long getCompanyId() {
-		return _impersonationRegistry.getCompanyId();
-	}
-
-	@Override
-	public ExpandoBridge getExpandoBridge() {
-		return _impersonationRegistry.getExpandoBridge();
+		return model.getCompanyId();
 	}
 
 	/**
@@ -161,7 +133,7 @@ public class ImpersonationRegistryWrapper
 	 */
 	@Override
 	public String getImpersonatedScreenName() {
-		return _impersonationRegistry.getImpersonatedScreenName();
+		return model.getImpersonatedScreenName();
 	}
 
 	/**
@@ -171,7 +143,7 @@ public class ImpersonationRegistryWrapper
 	 */
 	@Override
 	public long getImpersonatedUserId() {
-		return _impersonationRegistry.getImpersonatedUserId();
+		return model.getImpersonatedUserId();
 	}
 
 	/**
@@ -181,7 +153,7 @@ public class ImpersonationRegistryWrapper
 	 */
 	@Override
 	public String getImpersonatedUserUuid() {
-		return _impersonationRegistry.getImpersonatedUserUuid();
+		return model.getImpersonatedUserUuid();
 	}
 
 	/**
@@ -191,7 +163,7 @@ public class ImpersonationRegistryWrapper
 	 */
 	@Override
 	public long getImpersonationRegistryId() {
-		return _impersonationRegistry.getImpersonationRegistryId();
+		return model.getImpersonationRegistryId();
 	}
 
 	/**
@@ -201,7 +173,7 @@ public class ImpersonationRegistryWrapper
 	 */
 	@Override
 	public Date getOperationDate() {
-		return _impersonationRegistry.getOperationDate();
+		return model.getOperationDate();
 	}
 
 	/**
@@ -211,7 +183,7 @@ public class ImpersonationRegistryWrapper
 	 */
 	@Override
 	public int getOperationResult() {
-		return _impersonationRegistry.getOperationResult();
+		return model.getOperationResult();
 	}
 
 	/**
@@ -221,12 +193,7 @@ public class ImpersonationRegistryWrapper
 	 */
 	@Override
 	public long getPrimaryKey() {
-		return _impersonationRegistry.getPrimaryKey();
-	}
-
-	@Override
-	public Serializable getPrimaryKeyObj() {
-		return _impersonationRegistry.getPrimaryKeyObj();
+		return model.getPrimaryKey();
 	}
 
 	/**
@@ -236,7 +203,7 @@ public class ImpersonationRegistryWrapper
 	 */
 	@Override
 	public String getScreenName() {
-		return _impersonationRegistry.getScreenName();
+		return model.getScreenName();
 	}
 
 	/**
@@ -246,7 +213,7 @@ public class ImpersonationRegistryWrapper
 	 */
 	@Override
 	public long getUserId() {
-		return _impersonationRegistry.getUserId();
+		return model.getUserId();
 	}
 
 	/**
@@ -256,37 +223,22 @@ public class ImpersonationRegistryWrapper
 	 */
 	@Override
 	public String getUserUuid() {
-		return _impersonationRegistry.getUserUuid();
+		return model.getUserUuid();
 	}
 
+	/**
+	 * Returns the uuid of this impersonation registry.
+	 *
+	 * @return the uuid of this impersonation registry
+	 */
 	@Override
-	public int hashCode() {
-		return _impersonationRegistry.hashCode();
-	}
-
-	@Override
-	public boolean isCachedModel() {
-		return _impersonationRegistry.isCachedModel();
-	}
-
-	@Override
-	public boolean isEscapedModel() {
-		return _impersonationRegistry.isEscapedModel();
-	}
-
-	@Override
-	public boolean isNew() {
-		return _impersonationRegistry.isNew();
+	public String getUuid() {
+		return model.getUuid();
 	}
 
 	@Override
 	public void persist() {
-		_impersonationRegistry.persist();
-	}
-
-	@Override
-	public void setCachedModel(boolean cachedModel) {
-		_impersonationRegistry.setCachedModel(cachedModel);
+		model.persist();
 	}
 
 	/**
@@ -296,24 +248,7 @@ public class ImpersonationRegistryWrapper
 	 */
 	@Override
 	public void setCompanyId(long companyId) {
-		_impersonationRegistry.setCompanyId(companyId);
-	}
-
-	@Override
-	public void setExpandoBridgeAttributes(
-		com.liferay.portal.kernel.model.BaseModel<?> baseModel) {
-
-		_impersonationRegistry.setExpandoBridgeAttributes(baseModel);
-	}
-
-	@Override
-	public void setExpandoBridgeAttributes(ExpandoBridge expandoBridge) {
-		_impersonationRegistry.setExpandoBridgeAttributes(expandoBridge);
-	}
-
-	@Override
-	public void setExpandoBridgeAttributes(ServiceContext serviceContext) {
-		_impersonationRegistry.setExpandoBridgeAttributes(serviceContext);
+		model.setCompanyId(companyId);
 	}
 
 	/**
@@ -323,8 +258,7 @@ public class ImpersonationRegistryWrapper
 	 */
 	@Override
 	public void setImpersonatedScreenName(String impersonatedScreenName) {
-		_impersonationRegistry.setImpersonatedScreenName(
-			impersonatedScreenName);
+		model.setImpersonatedScreenName(impersonatedScreenName);
 	}
 
 	/**
@@ -334,7 +268,7 @@ public class ImpersonationRegistryWrapper
 	 */
 	@Override
 	public void setImpersonatedUserId(long impersonatedUserId) {
-		_impersonationRegistry.setImpersonatedUserId(impersonatedUserId);
+		model.setImpersonatedUserId(impersonatedUserId);
 	}
 
 	/**
@@ -344,7 +278,7 @@ public class ImpersonationRegistryWrapper
 	 */
 	@Override
 	public void setImpersonatedUserUuid(String impersonatedUserUuid) {
-		_impersonationRegistry.setImpersonatedUserUuid(impersonatedUserUuid);
+		model.setImpersonatedUserUuid(impersonatedUserUuid);
 	}
 
 	/**
@@ -354,13 +288,7 @@ public class ImpersonationRegistryWrapper
 	 */
 	@Override
 	public void setImpersonationRegistryId(long impersonationRegistryId) {
-		_impersonationRegistry.setImpersonationRegistryId(
-			impersonationRegistryId);
-	}
-
-	@Override
-	public void setNew(boolean n) {
-		_impersonationRegistry.setNew(n);
+		model.setImpersonationRegistryId(impersonationRegistryId);
 	}
 
 	/**
@@ -370,7 +298,7 @@ public class ImpersonationRegistryWrapper
 	 */
 	@Override
 	public void setOperationDate(Date operationDate) {
-		_impersonationRegistry.setOperationDate(operationDate);
+		model.setOperationDate(operationDate);
 	}
 
 	/**
@@ -380,7 +308,7 @@ public class ImpersonationRegistryWrapper
 	 */
 	@Override
 	public void setOperationResult(int operationResult) {
-		_impersonationRegistry.setOperationResult(operationResult);
+		model.setOperationResult(operationResult);
 	}
 
 	/**
@@ -390,12 +318,7 @@ public class ImpersonationRegistryWrapper
 	 */
 	@Override
 	public void setPrimaryKey(long primaryKey) {
-		_impersonationRegistry.setPrimaryKey(primaryKey);
-	}
-
-	@Override
-	public void setPrimaryKeyObj(Serializable primaryKeyObj) {
-		_impersonationRegistry.setPrimaryKeyObj(primaryKeyObj);
+		model.setPrimaryKey(primaryKey);
 	}
 
 	/**
@@ -405,7 +328,7 @@ public class ImpersonationRegistryWrapper
 	 */
 	@Override
 	public void setScreenName(String screenName) {
-		_impersonationRegistry.setScreenName(screenName);
+		model.setScreenName(screenName);
 	}
 
 	/**
@@ -415,7 +338,7 @@ public class ImpersonationRegistryWrapper
 	 */
 	@Override
 	public void setUserId(long userId) {
-		_impersonationRegistry.setUserId(userId);
+		model.setUserId(userId);
 	}
 
 	/**
@@ -425,86 +348,24 @@ public class ImpersonationRegistryWrapper
 	 */
 	@Override
 	public void setUserUuid(String userUuid) {
-		_impersonationRegistry.setUserUuid(userUuid);
+		model.setUserUuid(userUuid);
+	}
+
+	/**
+	 * Sets the uuid of this impersonation registry.
+	 *
+	 * @param uuid the uuid of this impersonation registry
+	 */
+	@Override
+	public void setUuid(String uuid) {
+		model.setUuid(uuid);
 	}
 
 	@Override
-	public com.liferay.portal.kernel.model.CacheModel
-		<net.carlosduran.liferay.impersonation.sb.model.ImpersonationRegistry>
-			toCacheModel() {
+	protected ImpersonationRegistryWrapper wrap(
+		ImpersonationRegistry impersonationRegistry) {
 
-		return _impersonationRegistry.toCacheModel();
+		return new ImpersonationRegistryWrapper(impersonationRegistry);
 	}
-
-	@Override
-	public net.carlosduran.liferay.impersonation.sb.model.ImpersonationRegistry
-		toEscapedModel() {
-
-		return new ImpersonationRegistryWrapper(
-			_impersonationRegistry.toEscapedModel());
-	}
-
-	@Override
-	public String toString() {
-		return _impersonationRegistry.toString();
-	}
-
-	@Override
-	public net.carlosduran.liferay.impersonation.sb.model.ImpersonationRegistry
-		toUnescapedModel() {
-
-		return new ImpersonationRegistryWrapper(
-			_impersonationRegistry.toUnescapedModel());
-	}
-
-	@Override
-	public String toXmlString() {
-		return _impersonationRegistry.toXmlString();
-	}
-
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj) {
-			return true;
-		}
-
-		if (!(obj instanceof ImpersonationRegistryWrapper)) {
-			return false;
-		}
-
-		ImpersonationRegistryWrapper impersonationRegistryWrapper =
-			(ImpersonationRegistryWrapper)obj;
-
-		if (Objects.equals(
-				_impersonationRegistry,
-				impersonationRegistryWrapper._impersonationRegistry)) {
-
-			return true;
-		}
-
-		return false;
-	}
-
-	@Override
-	public ImpersonationRegistry getWrappedModel() {
-		return _impersonationRegistry;
-	}
-
-	@Override
-	public boolean isEntityCacheEnabled() {
-		return _impersonationRegistry.isEntityCacheEnabled();
-	}
-
-	@Override
-	public boolean isFinderCacheEnabled() {
-		return _impersonationRegistry.isFinderCacheEnabled();
-	}
-
-	@Override
-	public void resetOriginalValues() {
-		_impersonationRegistry.resetOriginalValues();
-	}
-
-	private final ImpersonationRegistry _impersonationRegistry;
 
 }

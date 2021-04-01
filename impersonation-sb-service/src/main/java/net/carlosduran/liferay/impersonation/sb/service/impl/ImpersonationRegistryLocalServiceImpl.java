@@ -14,7 +14,11 @@
 
 package net.carlosduran.liferay.impersonation.sb.service.impl;
 
+import com.liferay.portal.aop.AopService;
+
 import net.carlosduran.liferay.impersonation.sb.service.base.ImpersonationRegistryLocalServiceBaseImpl;
+
+import org.osgi.service.component.annotations.Component;
 
 /**
  * The implementation of the impersonation registry local service.
@@ -26,9 +30,13 @@ import net.carlosduran.liferay.impersonation.sb.service.base.ImpersonationRegist
  * This is a local service. Methods of this service will not have security checks based on the propagated JAAS credentials because this service can only be accessed from within the same VM.
  * </p>
  *
- * @author Carlos Durán
+ * @author Brian Wing Shun Chan
  * @see ImpersonationRegistryLocalServiceBaseImpl
  */
+@Component(
+	property = "model.class.name=net.carlosduran.liferay.impersonation.sb.model.ImpersonationRegistry",
+	service = AopService.class
+)
 public class ImpersonationRegistryLocalServiceImpl
 	extends ImpersonationRegistryLocalServiceBaseImpl {
 
